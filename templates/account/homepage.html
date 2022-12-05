@@ -1,0 +1,438 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if messages %}
+                    {%for msg in messages%}
+                    {% if msg %}
+                    <div
+                        class="alert alert-{{msg.tags}} alert-dismissible fade show font-weight-bold text-primary mr-3 ml-3 mt-5">
+                        <small>{{msg}}</small>
+        
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+        
+                    {% endif %}
+                    {%endfor%}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="comtainer">
+           <style>
+            
+            body{
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+            }
+            .col-md-3
+            {
+            display: inline-block;
+            margin-left:-4px;
+            }
+            
+            .carousel-indicators .active {
+            background-color: blue;
+            }
+            
+            .col-md-3 img{
+            
+            width: 170px;
+            height: 200px;
+            }
+            
+            body .carousel-indicator li{
+            background-color: blue;
+            }
+            
+            body .carousel-indicators{
+            bottom: 0;
+            }
+            
+            body .carousel-control-prev-icon,
+            body .carousel-control-next-icon{
+            background-color: blue;
+            }
+            
+            .carousel-control-prev,
+            .carousel-control-next{
+            top: auto;
+            bottom: auto;
+            padding-top: 222px;
+            }
+            body .no-padding{
+            padding-left: 0;
+            padding-right: 0;
+            }
+            
+            .wrapper{
+            
+            margin-bottom:200px;
+            }
+            
+           </style>
+
+
+           
+            
+            <div class="container wrapper">
+                {% if recommended%}
+                <h5 class="my-4 text-light">Recommended Courses For You</u></h5>
+                <div class="row">
+                    {% for item in recommended %}
+                   
+                    
+                    <!-- Modal for recomentation -->
+                    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                   
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body ">
+                                    <p class="text-center"><strong>Description</strong> </p>
+                                    <p class="card-text alert alert-info">
+                                    {{item.description}}
+                                    </p>
+
+                                                    <p class="text-center"><strong>Other Requirements</strong></p>
+
+
+                                    <p>
+                                        <table class="table">
+                                          
+                                                    
+                                            
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="badge badge-success">No. of Lectures</span></td>
+                                                    <td>{{item.lectures}}</td>
+                                                   
+                                                </tr>
+
+                                                 <tr>
+                                            
+                                                <td><span class="badge badge-success">Entry Year</span></td>
+                                                <td>{{item.entry_year}}</td>
+                                              </tr>
+                                               <tr>
+                                            
+                                                <td><span class="badge badge-success">Intake In</span></td>
+                                                <td>{{item.intake_in}}</td>
+                                              </tr>
+                                                                                      <tr>
+                                        
+                                            <td><span class="badge badge-success">School Name</span></td>
+                                            <td>{{item.schools}}</td>
+                                        </tr>
+
+                                      
+
+                                        <tr>
+                                        
+                                            <td><span class="badge badge-success">School Location</span></td>
+                                            <td>{{item.location}}</td>
+                                        </tr>
+
+                                                                                <tr>
+                                        
+                                            <td><span class="badge badge-success">Phone Number</span></td>
+                                            <td>{{item.school_phone}}</td>
+                                        </tr>
+
+                                      
+
+                                        <tr>
+                                        
+                                            <td><span class="badge badge-success">Email Address</span></td>
+                                            <td>{{item.school_email}}</td>
+                                        </tr>
+                                            </tbody>
+                                        </table>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-2">
+                        
+                        <div class="card" style="width: 20rem">
+                            <div class="card-header"></div>
+                           
+                            <img class="card-img-top m-auto" src="{{item.image}}" alt="Card image cap"  style="border-radius: 50%;border:2px solid green;height:50px; width:50px;">
+                           
+                            <div class="card-body">
+                                <table class="table">
+                                  
+                                    <tbody>
+                                        <tr>
+                                            
+                                            <td><span class="badge badge-success">Course Name</span></td>
+                                            <td>{{item.title}}</td>
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td><span class="badge badge-success">Tution</span></td>
+                                            <td>Ksh: {{item.tution_fees}}</td>
+                                        </tr>
+                                        <tr>
+                                        
+                                            <td><span class="badge badge-success">Duration</span></td>
+                                            <td>{{item.academic_year}}</td>
+                                        </tr>
+                                        
+                                        
+                                     
+                                      
+                                        <tr>
+                                        
+                                            <td><span class="badge badge-success">School Name</span></td>
+                                            <td>{{item.schools}}</td>
+                                        </tr>
+
+                                      
+
+                                        <tr>
+                                        
+                                            <td><span class="badge badge-success">School Location</span></td>
+                                            <td>{{item.location}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+
+
+
+                            </div>
+                             <div class="card-body">
+                               <a data-toggle="modal" data-target="#modelId">
+                                  <p class="card-text btn btn-outline-info btn-block">
+                                    Read More
+                                    </p>
+                               </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <h5 class="my-4 text-light">No Recommended Course  Found for you!!!</u></h5>
+                {% endif %}
+            
+            
+            
+            
+                <br><br>
+                <!--Slideshow starts here -->
+                {% for course, range, nSlides in allCourses %}
+
+                                <!-- Modal -->
+                    <div class="modal fade" id="filtermodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                   
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body ">
+                                    <p class="text-center"><strong>Description</strong> </p>
+                                     <p class="card-text alert alert-info">
+                                                {{course.0.description}}
+                                            
+                                    </p>
+
+                                                    <p class="text-center"><strong>Other Requirements</strong></p>
+
+
+                                    <p>
+                                        <table class="table">
+                                          
+                                                    
+                                            
+                                            <tbody>
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">School Name</span></td>
+                                                        <td>{{course.0.schools}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">Location</span></td>
+                                                        <td>{{course.0.location}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">School Phone</span></td>
+                                                        <td>{{course.0.school_phone}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">School Email</span></td>
+                                                        <td>{{course.0.school_email}}</td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                <h5 class="my-4 text-light">Filtered By:{{course.0.schools}}</h5>
+                <div class="row ">
+                    <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+            
+                            {% for i in range %}
+                            <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                            {% endfor %}
+                        </ul>
+            
+            
+                        <div class="container carousel-inner no-padding">
+            
+                            <div class="carousel-item active">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+            
+            
+                                    <div class="card " style="width: 18rem">
+                                        <img class="card-img-top m-auto" src="{{course.0.image.url}}" style="width: 50px;height: 50px; border-radius:50% ;border:2px solid red;" alt="Card image cap" 
+                                          >
+                                        <div class="card-body">
+                                           
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th><span class="badge badge-danger">Course Title</span></th>
+                                                        <th>{{course.0.title}}</th>
+                                                      
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        
+                                                        <td><span class="badge badge-danger">Faculty</span></td>
+                                                        <td>{{course.0.faculty}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">Entry Year</span></td>
+                                                        <td>{{course.0.entry_year}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-danger">School Name</span></td>
+                                                        <td>{{course.0.schools}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+                                            
+
+                                             <a data-toggle="modal" data-target="#filtermodal">
+                                                <p class="card-text btn btn-outline-danger btn-block">
+                                                    Read More
+                                                </p>
+                                            </a>
+                                           
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">Location: {{course.0.location}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+            
+            
+                                {% for i in course|slice:"1:"%}
+                                <div class="col-xs-12 col-sm-12 col-md-3  mt-4" style="margin-right: 50px;">
+                                    <div class="card offset-md-2"  style="width: 20rem; ">
+                                        <img class="card-img-top m-auto" style="width: 50px;height: 50px; border-radius:50% ;border:2px solid blue;" src="{{i.image.url}}" alt="Card image cap" height="160px" width="200px">
+                                        <div class="card-body">
+                                                <p class="card-text alert alert-info">
+                                                    {{i.description}}
+                                                
+                                                </p>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th><span class="badge badge-primary">Course Title</span></th>
+                                                        <th>{{i.title}}</th>
+                                                     
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        
+                                                        <td><span class="badge badge-primary">Faculty</span></td>
+                                                        <td>{{i.faculty}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                       
+                                                        <td><span class="badge badge-primary">School Name</span></td>
+                                                        <td>{{i.course_schools}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td><span class="badge badge-primary">Entry Year</span></td>
+                                                        <td>{{i.entry_year}}</td>
+                                                    </tr>
+
+                                                  
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">Location: {{i.location}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                            </div>
+                            <div class="carousel-item">
+                                {% endif %}
+            
+                                {% endfor %}
+                            </div>
+            
+            
+            
+                        </div>
+                    </div>
+                    <!-- left and right controls for the slide -->
+                    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+             
+     {% endblock %}

@@ -1,0 +1,75 @@
+<div class="row">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Courses Table</h1>
+        <p class="mb-4">You can view the data here in a tabulated manner</p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Courses
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Institution</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                
+                            </tr>
+                        </thead>
+                     
+                        <tbody>
+                            {% for post in posts %}
+                            <tr>
+                                <td>{{post.title}}</td>
+                                <td>{{post.schools}}</td>
+                                <td>{{post.location}}</td>
+                                <td>
+                                    <a href="{% url 'detail' post.slug %}" class="btn btn-success btn-sm">View</a>
+                                 
+
+                                  
+                                </td>
+                                
+                            </tr>
+
+                            {% endfor %}
+                          
+                        </tbody>
+                    </table>
+
+
+                    {% if posts %}
+                    {% else %}
+                    
+                    <div class=" container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="alert alert-warning">you have not posted any course</h4>
+                    
+                                <a href="{% url 'add' %}" class="btn btn-success btn-sm">Add a Course</a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+

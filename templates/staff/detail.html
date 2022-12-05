@@ -1,0 +1,96 @@
+
+
+
+    {% extends 'main.html' %}
+    
+    {% block content %}
+    
+    <div class="col-md-12">
+    
+        <!-- Dropdown Card Example -->
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header ">
+                <h6 class="m-0 font-weight-bold text-primary " style="text-align: center;">
+                <img class="card-img-top "  src="{{posts.image.url}}" style="border-radius:50%;border:2px solid black; height:90px;width:90px">
+                    
+                </h6>
+                <div class="dropdown no-arrow">
+    
+    
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><span class="badge badge-success">Course Name:</span></th>
+                            <th><span class="badge badge-success">School Name:</span></th>
+                            <th><span class="badge badge-success">Intake Date:</span></th>
+                            <th><span class="badge badge-success">Nuber of Lectures:</span></th>
+                            <th><span class="badge badge-success">Faculty:</span></th>
+                            <th><span class="badge badge-success">Location:</span></th>
+                            <th><span class="badge badge-success">Tution:</span></th>
+                            <th><span class="badge badge-success">Status:</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{posts.title}}</td>
+                            <td>{{posts.schools}}</td>
+                            <td>{{posts.intake_in}}</td>
+                            <td>{{posts.lectures}} lectures</td>
+                            <td>{{posts.faculty}}</td>
+                            <td>{{posts.location}}</td>
+                            <td>Ksh: {{posts.tution_fees}}</td>
+                            <td>{{posts.description}}</td>
+
+
+                        </tr>
+                       
+                    </tbody>
+                </table>
+               
+               
+
+                <p class="card-text">
+                <div class="row">
+                    <div class="col">
+                        {% if posts.author == request.user %}
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+
+                        <a style="text-decoration: none;font-weight:bold" href="{% url 'update' posts.slug %}" >Update</a>
+
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        
+                        <a style="text-decoration: none;font-weight:bold" href="{% url 'delete' posts.slug %}">Delete</a>
+
+                        
+
+                             {% endif %}
+
+                    </div>
+                    <div class="col text-center">
+                        <div class="form-group">
+                            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                            <a href="{% url 'dashboard2' %}" style="text-decoration: none;font-weight:bold">Back</a>
+                
+                        </div>
+                    </div>
+                </div>
+                </p>
+
+            </div>
+          
+            <div class="card-footer text-muted">
+                Updated by {{posts.author}}
+            </div>
+        </div>
+    </div>
+
+
+
+    {% endblock %}
+

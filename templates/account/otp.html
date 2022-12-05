@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background: -webkit-linear-gradient(left, #00c6ff, #3931af);
+    }
+</style>
+<br>
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% if messages %}
+            {%for msg in messages%}
+            {% if msg %}
+            <div
+                class="alert alert-{{msg.tags}} alert-dismissible fade show font-weight-bold text-primary mr-3 ml-3 mt-5">
+                <small>{{msg}}</small>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {% endif %}
+            {%endfor%}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container ">
+    <div class="row">
+        <div class="col-md-3 offset-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title">Title</h4>
+                    <p class="card-text">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                        
+                                    <div class="form-group">
+                        
+                                        <div>{{form}}</div>
+                        
+                                    </div>
+                        
+                        
+                        
+                        
+                                </div>
+                            </div>
+                        
+                        
+                            <div class="row">
+                                <div class="col">
+                        
+                                    <div class="form-group">
+                        
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                        
+                        
+                        
+                        
+                                </div>
+                            </div>
+                        
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% endblock %}

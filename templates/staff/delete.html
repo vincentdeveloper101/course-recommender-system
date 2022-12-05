@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="col-md-12">
+
+    <!-- Dropdown Card Example -->
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header ">
+          
+            <div class="dropdown no-arrow">
+
+
+            </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><span class="badge badge-success">Course Name:</span></th>
+                        <th><span class="badge badge-success">School Name:</span></th>
+                        <th><span class="badge badge-success">Date:</span></th>
+                        <th><span class="badge badge-success">Nuber of Lectures:</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{posts.id}}</td>
+                        <td>{{posts.schools}}</td>
+                        <td>{{posts.date}}</td>
+                        <td>{{posts.lectures}} lectures</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+            <p class="card-text">
+            <div class="row">
+                <div class="col">
+                    {% if posts.author == request.user %}
+             
+
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+
+                    <a style="text-decoration: none;font-weight:bold" href="{% url 'delete' posts.slug %}">Deleted</a>
+                    {% endif %}
+
+                </div>
+                <div class="col text-center">
+                    <div class="form-group">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                        <a href="{% url 'dashboard2' %}" style="text-decoration: none;font-weight:bold">Back</a>
+
+                    </div>
+                </div>
+            </div>
+            </p>
+
+        </div>
+
+        <div class="card-footer text-muted">
+            Updated by {{posts.author}}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
